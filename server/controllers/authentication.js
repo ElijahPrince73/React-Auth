@@ -5,6 +5,8 @@ exports.signup = function(req, res, next) {
   const email = req.body.email
   const password = req.body.password
 
+  if (!user) {}
+
   // See if a user with the given email exits
   User.findOne({
     email: email
