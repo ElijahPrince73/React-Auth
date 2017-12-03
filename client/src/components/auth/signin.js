@@ -5,12 +5,10 @@ import * as actions from '../../actions'
 
 class Signin extends Component {
   handleFormValues = values => {
-    console.log(values);
-    console.log(this.props);
     this.props.signinUser(values)
+    console.log(values);
   };
   renderInput({ label, ...field }) {
-    console.log(...field.input);
     return (
       <fieldset className="form-group">
         <label>
