@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import { withRouter } from 'react-router'
 import * as actions from '../../actions'
 
 class Signin extends Component {
   handleFormValues = values => {
-    this.props.signinUser(values)
-    console.log(values);
+    this.props.signinUser(values, this.props.history)
   };
   renderInput({ label, ...field }) {
     return (
@@ -32,11 +32,9 @@ class Signin extends Component {
   }
 }
 
-// Wrap Signin with redux Form
-const reduxFormSignin = reduxForm({
-  form: 'signin',
-  fields: ['email', 'password']
-})(Signin);
-
-// Export wrapped Signin container with connect helper
-export default connect(null, actions)(reduxFormSignin);
+export default reduxForm({
+  form: 'Signin',
+  fields: ['email','password']
+})(
+  connect(null,actions)(withRouter(Signin))
+);
