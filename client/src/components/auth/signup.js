@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {reduxForm, Field, SubmissionError} from 'redux-form';
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
+
 const renderInput=({label, type, ...field,meta: {touched, error, warning}})=>{
  return(
  <fieldset className="form-group">
@@ -11,6 +12,7 @@ const renderInput=({label, type, ...field,meta: {touched, error, warning}})=>{
  </fieldset>
  )
 }
+
 class Signup extends Component {
    handleFormValues=values=>{
    this.props.signupUser({email:values.email, password:values.password, passwordConfirm:values.passwordConfirm});
