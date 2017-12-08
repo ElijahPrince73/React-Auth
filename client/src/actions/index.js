@@ -34,7 +34,7 @@ export function authError(error) {
 }
 
 export function signoutUser() {
-  // Logs user out and deletes token
+  // Logs user out and deletes token 
   localStorage.removeItem('token')
   return { type: UNAUTH_USER }
 }
