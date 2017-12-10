@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import * as actions from '../actions'
 
-const FeaturePage = ( ) => {
-  return (
-    <div>
-      <h1>THIS IS THE FEATURE PAGE</h1>
-    </div>
-  )
+class Feature extends Component {
+  componentWillMount() {
+    this.props.fetchMessage()
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.props.message}</h1>
+      </div>
+    )
+  }
 }
 
-export default FeaturePage
+function mapStateToProps(state) {
+  return { message: state.auth.message };
+}
+
+export default connect(mapStateToProps, actions)(Feature)
