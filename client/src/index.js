@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk'
 
+import '../style/style.css'
+
 import App from './components/app';
 import Signin from './components/auth/signin'
 import Signup from './components/auth/signup'

@@ -26,6 +26,21 @@ export function signinUser({email, password}, history) {
   }
 }
 
+export function signupUser({email, password}, history){
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/signup`, {email, password})
+    .then((response) => {
+      console.log(response);
+      dispatch({ type: AUTH_USER})
+      localStorage.setItem('token', response.data.token)
+      history.push('/feature');
+    })
+    .catch(response => {
+        dispatch(authError("You done fudged up man"));
+    });
+  }
+}
+
 export function authError(error) {
   return {
     type: AUTH_ERROR,
@@ -34,7 +49,7 @@ export function authError(error) {
 }
 
 export function signoutUser() {
-  // Logs user out and deletes token 
+  // Logs user out and deletes token
   localStorage.removeItem('token')
   return { type: UNAUTH_USER }
 }
